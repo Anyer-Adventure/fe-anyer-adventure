@@ -59,11 +59,17 @@
 
 <style lang="scss" scoped>
   @import "../../main.scss";
+  @import '@/assets/css/responsive.scss';
 
   .home-selling-point {
     max-width: 1200px;
     margin: auto;
     padding-top: 100px;
+
+    @include mobile {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
 
     .header {
       display: flex;
@@ -87,6 +93,12 @@
       display: flex;
       justify-content: space-between;
 
+      @include mobile {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 30px;
+      }
+
       .card {
         padding: 30px;
         background-image: linear-gradient(#DAEDEF, white);
@@ -94,6 +106,10 @@
         gap: 20px;
         border-radius: 12px;
         width: 32%;
+
+        @include mobile {
+          width: 100%;
+        }
 
         &__icon {
           width: 52px;

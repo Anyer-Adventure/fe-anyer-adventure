@@ -26,11 +26,16 @@ defineProps({
 
 <style lang="scss" scoped>
   @import "../../main.scss";
+  @import '@/assets/css/responsive.scss';
 
   .section-title {
     width: 458px;
     margin: auto;
     text-align: center;
+
+    @include mobile {
+      width: 100%;
+    }
 
     &__subtitle {
       font-size: 20px;

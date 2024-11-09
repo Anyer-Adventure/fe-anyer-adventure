@@ -6,12 +6,21 @@
           Anyer Adventure
         </div>
         <div class="navbar__middle-section middle-section">
-          <div class="middle-section__home">
+          <!-- <div class="middle-section__home">
             <u>Home</u>
-          </div>
-          <div class="middle-section__Explore">
+          </div> -->
+          <NuxtLink
+            to="/"
+            class="middle-section__link"
+          >
+            Home
+          </NuxtLink>
+          <NuxtLink
+            to="/explore"
+            class="middle-section__link"
+          >
             Explore
-          </div>
+          </NuxtLink>
         </div>
         <!-- <div class="navbar__right-section right-section">
   
@@ -24,12 +33,18 @@
 
 <style lang="scss" scoped>
   @import "../main.scss";
+  @import '@/assets/css/responsive.scss';
 
   .navbar {
     background-color: $main-bg-color;
     width: 100%;
     padding: 20px 0;
     border-bottom: 1px solid lightgray;
+
+    @include mobile {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
     
     &__wrapper {
       max-width: 1200px;
@@ -45,6 +60,10 @@
     .middle-section {
       display: flex;
       gap: 40px;
+      
+      &__link {
+        color: black;
+      }
     }
   }
 </style>

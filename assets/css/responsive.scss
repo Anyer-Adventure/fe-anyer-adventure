@@ -1,0 +1,39 @@
+// screen size
+$tablet-size: 768px;
+$desktop-size: 1200px;
+
+@mixin from($device) {
+  @media screen and (min-width: $device) {
+    @content;
+  }
+}
+
+@mixin until($device) {
+  @media screen and (max-width: ($device - 1px)) {
+    @content;
+  }
+}
+
+@mixin custom-screen($from, $to) {
+  @media screen and (min-width: $from) and (max-width: $to - 1px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: ($tablet-size - 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-size) and (max-width: $desktop-size - 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-size), print {
+    @content;
+  }
+}

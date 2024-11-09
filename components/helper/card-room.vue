@@ -1,27 +1,34 @@
 <template>
-  <div class="card-destination">
-    <div class="card-destination__header header">
+  <div class="card-room">
+    <div class="card-room__header header">
       <div class="header__type">
-        Hotel
+        No-refund
       </div>
     </div>
-    <div class="card-destination__content content">
+    <div class="card-room__content content">
       <div class="content__title">
         {{ title }}
       </div>
-      <div class="content__location">
-        {{ location }}
+      <div class="content__capacity">
+        <img
+          src="/person.svg"
+          alt="person"
+        >
+        Kapasitas {{ capacity }} tamu
       </div>
-      <!-- <div class="content__review">
-        {{ rating }} ({{ totalReviews }} reviews)
-      </div> -->
-      <div class="content__total-seen-and-discount total-seen-and-discount">
-        <div class="total-seen-and-discount__total-seen">
-          {{ totalSeen }} dilihat
-        </div>
-        <div class="total-seen-and-discount__discount">
-          {{ discount }}% off
-        </div>
+      <div class="content__bed-type">
+        <img
+          src="/bed-type.svg"
+          alt="bed type"
+        >
+        {{ bedType }}
+      </div>
+      <div class="content__area">
+        <img
+          src="/area.svg"
+          alt="area"
+        >
+        {{ size }} m2
       </div>
       <div class="content__price price">
         <div class="price__discounted-price">
@@ -34,6 +41,11 @@
       <div class="content__info">
         per malam, termasuk pajak & biaya lainnya
       </div>
+      <div class="content__choose-room-button">
+        <helper-button
+          text="Pilih kamar"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -43,24 +55,24 @@ import { defineProps } from 'vue'
 import { convertPriceToRupiah } from '@/helpers/currency'
 
 defineProps({
+  uuid: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     default: ''
   },
-  location: {
+  capacity: {
     type: String,
     default: ''
   },
-  rating: {
+  bedType: {
     type: String,
     default: ''
   },
-  totalReviews: {
+  size: {
     type: Number,
-    default: 0
-  },
-  totalSeen: {
-    type: String,
     default: 0
   },
   discount: {
@@ -85,7 +97,7 @@ defineProps({
 <style lang="scss" scoped>
   @import "../../main.scss";
 
-  .card-destination {
+  .card-room {
     // width: 312px;
     // height: 384px;
     border-radius: 12px;
@@ -119,15 +131,11 @@ defineProps({
         margin-bottom: 10px;
       }
 
-      &__location {
+      &__capacity, &__bed-type, &__area {
+        display: flex;
+        gap: 12px;
         padding-left: 10px;
-        color: $sub-text-color;
         font-size: 16px;
-        margin-bottom: 10px;
-      }
-
-      &__review {
-        padding-left: 10px;
         margin-bottom: 10px;
       }
 
@@ -165,6 +173,12 @@ defineProps({
           text-decoration: line-through;
           font-size: 14px;
         }
+      }
+
+      &__choose-room-button {
+        padding: 10px;
+        display: flex;
+        justify-content: end;
       }
 
       &__info {
